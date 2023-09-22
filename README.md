@@ -17,13 +17,12 @@ This project uses the BERT-based question-answering model to answer questions ba
 - Pretrained BERT model for question answering.
 - Text preprocessing to clean and format the extracted text.
 
-- 
-##Usage
+## Usage
 To use this code, follow these steps:
 
->Place your PDF file in the project directory or specify its path in the extract_text_from_pdf function.
->Open the Python script (main.py) and replace the PDF file path with your file.
->Run the script to extract text from the PDF and perform question answering.
+- Place your PDF file in the project directory or specify its path in the extract_text_from_pdf function.
+- Open the Python script (main.py) and replace the PDF file path with your file.
+- Run the script to extract text from the PDF and perform question answering.
 
 ## License
 
@@ -35,7 +34,3 @@ You can save this content in a file named `README.md` in the root directory of y
 
    ```bash
    git clone https://github.com/9147/chatbot_model.git
-
-
-
-
