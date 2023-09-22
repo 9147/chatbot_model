@@ -1,6 +1,6 @@
 # Question Answering ChatBot with BERT
 
-This project demonstrates how to extract text from a PDF file and perform question-answering using the BERT model from the Hugging Face Transformers library.
+This project demonstrates how to extract text from a PDF file and perform question-answering using the BERT model from the Transformers library.
 
 ## Table of Contents
 
