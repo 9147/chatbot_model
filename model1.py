@@ -67,5 +67,5 @@ def getAnswer(question):
     # Print answers with confidence levels
     for i, answer in enumerate(answers):
         result+=f"Answer {i + 1}: {answer['answer']} (Confidence: {answer['confidence']:.2f})\n"
-
+    print(result)
     return answers[0]['answer']
