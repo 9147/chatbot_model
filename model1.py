@@ -2,6 +2,7 @@ import torch
 from transformers import BertForQuestionAnswering, BertTokenizer
 from PyPDF2 import PdfReader
 import nltk
+import json
 nltk.download('punkt')
 
 model = BertForQuestionAnswering.from_pretrained('bert-large-uncased-whole-word-masking-finetuned-squad')
@@ -57,13 +58,29 @@ def process_text_chunk(chunk_text, question, max_seq_length=512):
 def getAnswer(question):
     # Example chunk text and question
     chunk_text = cleaned_text
-
-    # Process the chunk with the question
-    answers = process_text_chunk(chunk_text, question)
-
-    # Sort answers by confidence level (higher confidence first)
-    answers.sort(key=lambda x: x["confidence"], reverse=True)
+    answers=""
+    val=False
+    d={}
+    with open('answers.json','r') as file:
+        d=json.load(file)
+        # print(d)
+        answers=d.get(question,"")
+        # print(answers)
+        if answers=="":
+            val=True
+            answers = process_text_chunk(chunk_text, question)
+            # Sort answers by confidence level (higher confidence first)
+            answers.sort(key=lambda x: x["confidence"], reverse=True)
+    if val:
+        with open('answers.json','w') as file2:
+            d[question]=answers
+            json.dump(d,file2)
     result=""
+    # with open('answers.json','w') as file:
+    #     json.dump({"manoj":"manoj"},file)
+    # answers = process_text_chunk(chunk_text, question)
+    # # Sort answers by confidence level (higher confidence first)
+    # answers.sort(key=lambda x: x["confidence"], reverse=True)
     # Print answers with confidence levels
     for i, answer in enumerate(answers):
         result+=f"Answer {i + 1}: {answer['answer']} (Confidence: {answer['confidence']:.2f})\n"
